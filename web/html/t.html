@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传</title>
+    <style>
+        /* 全局样式 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: #333;
+        }
+
+        /* 上传容器样式 */
+        .upload-container {
+            background-color: #fff;
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .upload-container:hover {
+            transform: translateY(-5px);
+        }
+        .upload-container h2 {
+            font-size: 24px;
+            color: #4b6cb7;
+            margin-bottom: 20px;
+        }
+        
+        /* 上传框样式 */
+        .file-input {
+            width: 100%;
+            padding: 40px 0;
+            border: 2px dashed #4b6cb7;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+        .file-input:hover {
+            background-color: #f0f5ff;
+        }
+        .file-input label {
+            display: block;
+            font-size: 16px;
+            color: #4b6cb7;
+        }
+        .file-input input {
+            display: none;
+        }
+
+        /* 提交按钮样式 */
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4b6cb7;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .submit-btn:hover {
+            background-color: #182848;
+        }
+
+        /* 上传状态样式 */
+        .status {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .status.success {
+            color: #28a745;
+        }
+        .status.error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>上传文件</h2>
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+            <div class="file-input" id="fileInputBox">
+                <label for="file">点击选择文件或拖动到此处</label>
+                <input type="file" id="file" name="file" required>
+            </div>
+            <button type="submit" class="submit-btn">上传文件</button>
+        </form>
+        <p id="uploadStatus" class="status"></p>
+    </div>
+
+    <script>
+        // 文件拖放功能
+        const fileInputBox = document.getElementById('fileInputBox');
+        const fileInput = document.getElementById('file');
+        fileInputBox.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            fileInputBox.style.backgroundColor = '#f0f5ff';
+        });
+        fileInputBox.addEventListener('dragleave', () => {
+            fileInputBox.style.backgroundColor = 'transparent';
+        });
+        fileInputBox.addEventListener('drop', (event) => {
+            event.preventDefault();
+            fileInputBox.style.backgroundColor = 'transparent';
+            fileInput.files = event.dataTransfer.files;
+        });
+
+        // 表单提交功能
+        document.getElementById('uploadForm').onsubmit = async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const statusElement = document.getElementById('uploadStatus');
+            if (response.ok) {
+                statusElement.textContent = '文件上传成功！';
+                statusElement.className = 'status success';
+            } else {
+                statusElement.textContent = '文件上传失败。';
+                statusElement.className = 'status error';
+            }
+        };
+    </script>
+</body>
+</html>
