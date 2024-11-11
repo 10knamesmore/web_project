@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/login")
+@WebServlet(urlPatterns = "/managerLogin")
 public class ManagerLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,7 +19,7 @@ public class ManagerLogin extends HttpServlet {
         if("123".equals(username) && "123".equals(password)) {
             resp.sendRedirect("./html/UploadFile.html");
         } else {
-            resp.sendRedirect("./index.html?error=invalid");
+            resp.sendRedirect("./managerLogin.html?error=invalid");
         }
     }
 }

@@ -2,8 +2,8 @@ package com.wanger.data;
 
 import java.util.ArrayList;
 
-public class Team {
-    private String teamid;
+public class Team implements AbstractSavableData {
+    private String ID;
     private String teamName;
     private ArrayList<Coach> coaches;
     
@@ -17,7 +17,7 @@ public class Team {
      * */
     public Team(String teamid, String teamName, ArrayList<Coach> coaches) {
         if (!teamid.isEmpty())
-            this.teamid = teamid;
+            this.ID = teamid;
         else {
             throw new IllegalArgumentException("Team ID cannot be empty.");
         }
@@ -32,25 +32,23 @@ public class Team {
             this.coaches = new ArrayList<>();
         }
     }
-    /*
-     * 用于将数据存储到数据库中
-     *
-     */
+    
     public Team(String teamName, ArrayList<Coach> coaches) {
-        if(!teamName.isEmpty()) {
+        this.ID = "";
+        if (!teamName.isEmpty()) {
             this.teamName = teamName;
         } else {
             this.teamName = "null";
         }
-        if(coaches == null || coaches.isEmpty()) {
+        if (coaches == null || coaches.isEmpty()) {
             this.coaches = new ArrayList<>();
         } else {
             this.coaches = coaches;
         }
     }
     
-    public String getTeamid() {
-        return teamid;
+    public String getID() {
+        return ID;
     }
     
     public String getTeamName() {
@@ -65,8 +63,8 @@ public class Team {
         this.teamName = teamName;
     }
     
-    public void setTeamid(String teamid) {
-        this.teamid = teamid;
+    public void setID(String ID) {
+        this.ID = ID;
     }
     
     public void setCoaches(ArrayList<Coach> coaches) {
@@ -76,9 +74,15 @@ public class Team {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Team ID: ").append(teamid).append("\n");
-        stringBuilder.append("Team Name: ").append(teamName).append("\n");
-        stringBuilder.append("Coaches: ").append(coaches.toString()).append("\n");
+        stringBuilder.append("Team ID: ")
+                     .append(ID)
+                     .append("\n");
+        stringBuilder.append("Team Name: ")
+                     .append(teamName)
+                     .append("\n");
+        stringBuilder.append("Coaches: ")
+                     .append(coaches.toString())
+                     .append("\n");
         return stringBuilder.toString();
     }
 }

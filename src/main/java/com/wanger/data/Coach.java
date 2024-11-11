@@ -2,9 +2,9 @@ package com.wanger.data;
 
 import java.util.ArrayList;
 
-public class Coach {
+public class Coach{
     private String name;
-    private ArrayList<String> coachedMatchids;
+    private ArrayList<String> coachedMatchIds;
     
     public Coach() {
         super();
@@ -12,9 +12,9 @@ public class Coach {
     
     Coach(String name, ArrayList<String> matchesid) {
         this.name = name;
-        this.coachedMatchids = new ArrayList<>();
+        this.coachedMatchIds = new ArrayList<>();
         if (matchesid != null) {
-            this.coachedMatchids = matchesid;
+            this.coachedMatchIds = matchesid;
         }
     }
     
@@ -27,19 +27,19 @@ public class Coach {
         this.name = name;
     }
     
-    public ArrayList<String> getCoachedMatchids() {
-        return coachedMatchids;
+    public ArrayList<String> getCoachedMatchIds() {
+        return coachedMatchIds;
     }
     
-    public void setCoachedMatchids(ArrayList<String> coachedMatchids) {
-        this.coachedMatchids = coachedMatchids;
+    public void setCoachedMatchIds(ArrayList<String> coachedMatchIds) {
+        this.coachedMatchIds = coachedMatchIds;
     }
     
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Name: ").append(name).append("\n");
-        stringBuilder.append("Coached Match IDs: ").append(coachedMatchids).append("\n");
+        stringBuilder.append("Coached Match IDs: ").append(coachedMatchIds).append("\n");
         return stringBuilder.toString();
     }
 }
