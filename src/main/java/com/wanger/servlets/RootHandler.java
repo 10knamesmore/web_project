@@ -1,4 +1,4 @@
-package com.wanger;
+package com.wanger.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,10 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/manager*", "/manager"})
-public class ManagerHandler extends HttpServlet {
+@WebServlet(urlPatterns = "")
+public class RootHandler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.sendRedirect("/html/managerLogin.html");
+        resp.setContentType("text/plain; charset=UTF-8");
+        resp.getWriter().write("欢迎!");
     }
 }

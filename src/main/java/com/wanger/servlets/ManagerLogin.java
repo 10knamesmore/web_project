@@ -1,6 +1,5 @@
-package com.wanger.login;
+package com.wanger.servlets;
 
-import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,15 +10,15 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/managerLogin")
 public class ManagerLogin extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         
         /*TODO*/
         if("123".equals(username) && "123".equals(password)) {
-            resp.sendRedirect("./html/UploadFile.html");
+            resp.sendRedirect("/manager/html/managerInterface.html");
         } else {
-            resp.sendRedirect("./managerLogin.html?error=invalid");
+            resp.sendRedirect("/manager/html/managerLogin.html?error=invalid");
         }
     }
 }

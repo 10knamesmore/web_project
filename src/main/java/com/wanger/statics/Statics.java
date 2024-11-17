@@ -1,7 +1,8 @@
 package com.wanger.statics;
 
-import com.wanger.data.*;
+import com.wanger.dataDefines.*;
 import com.wanger.mongoDB.MongoOperation;
+import com.wanger.mongoDB.TeamDataOperation;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Statics {
     public static final String MONGO_CONNECTION_STRING = "mongodb://localhost:27017";
     public static final String TEAM_COLLECTION_NAME = "teams";
     public static final String MATCH_COLLECTION_NAME = "matches";
+    public static final String MANAGERS_ACCOUNTS_COLLECTION_NAME = "managers";
     public static final Team TEST_TEAM_DATA_A;
     public static final Team TEST_TEAM_DATA_B;
     public static final Match TEST_MATCH_DATA;
@@ -23,7 +25,7 @@ public class Statics {
         coaches.add(testCoach1);
         coaches.add(testCoach2);
         TEST_TEAM_DATA_A = new Team("中国", coaches);
-        String teamA_ID = MongoOperation.SaveData(TEST_TEAM_DATA_A, Statics.TEAM_COLLECTION_NAME);
+        String teamA_ID = TeamDataOperation.Save(TEST_TEAM_DATA_A);
         
         
         //初始化TEAM_B
@@ -33,7 +35,7 @@ public class Statics {
         coachesB.add(testCoach3);
         coachesB.add(testCoach4);
         TEST_TEAM_DATA_B = new Team("沙特", coachesB);
-        String teamB_ID = MongoOperation.SaveData(TEST_TEAM_DATA_B, Statics.TEAM_COLLECTION_NAME);
+        String teamB_ID = TeamDataOperation.Save(TEST_TEAM_DATA_B);
         
         //初始化比赛结果
         LocalDate matchDate = LocalDate.of(2022, 3, 20);

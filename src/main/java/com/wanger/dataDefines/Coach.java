@@ -1,4 +1,4 @@
-package com.wanger.data;
+package com.wanger.dataDefines;
 
 import java.util.ArrayList;
 

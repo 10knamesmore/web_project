@@ -1,6 +1,4 @@
-package com.wanger.data;
-
-import java.util.regex.MatchResult;
+package com.wanger.dataDefines;
 
 public class Matches {
     public static Match.Result GenResult(int TeamAScore,int TeamBResult) {

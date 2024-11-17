@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Poppins-Regular, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: #333;
+}
+
+/* 上传容器样式 */
+.upload-container {
+  background-color: #fff;
+  padding: 30px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+  will-change: opacity,transform;
+}
+.upload-container:hover {
+  transform: translateY(-8px);
+  will-change: transform;
+}
+.upload-container .header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+.upload-container h2 {
+  font-size: 24px;
+  color: #4b6cb7;
+  margin-bottom: 10px;
+}
+.upload-container .back_button {
+  margin-right: 10px; /* 按钮和标题之间的间距 */
+  margin-bottom: 10px;
+  padding: 5px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4b6cb7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.upload-container .back_button:hover {
+  background-color: #182848;
+}
+
+/* 上传框样式 */
+.file-input {
+  width: 100%;
+  padding: 40px 0;
+  border: 2px dashed #4b6cb7;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.file-input:hover {
+  background-color: #f0f5ff;
+}
+.file-input label {
+  display: block;
+  font-size: 16px;
+  color: #4b6cb7;
+}
+.file-input input {
+  display: none;
+}
+
+/* 提交按钮样式 */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4b6cb7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin-top: 15px;
+}
+.submit-btn:hover {
+  background-color: #182848;
+  transform: scale(1.05);
+}
+
+/* 上传状态样式 */
+.status {
+  margin-top: 15px;
+  font-size: 14px;
+}
+.status.success {
+  color: #28a745;
+}
+.status.error {
+  color: #dc3545;
+}
+.fade_in {
+  opacity: 1;
+  will-change: opacity;
+}
+
+.fade_out {
+  pointer-events: none;
+  transform: translateY(5px);
+  opacity: 0;
+  will-change: opacity;
+}

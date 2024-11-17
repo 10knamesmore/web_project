@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>查找数据</title>
+    <link rel="stylesheet" href="../css/FindData.css" type="text/css" />
+    <script>
+      window.addEventListener("load", () => {
+        const container = document.getElementById("container");
+        container.classList.add("fade_in");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="header1">
+        <button
+          class="back_button"
+          id="back_button"
+          data-url="./managerInterface.html"
+        >
+          < 返回
+        </button>
+      </div>
+      <div class="header2">
+        <h2>请选择要查找的数据:</h2>
+      </div>
+      <div class="buttons">
+        <button class="choice_but">队伍(教练)</button>
+        <button class="choice_but">比赛数据</button>
+      </div>
+    </div>
+    <script src="../js/FindData.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>上传数据</title>
+    <link rel="stylesheet" href="../css/uploadfile.css" type="text/css" />
+    <script>
+      window.addEventListener("load", () => {
+        const container = document.getElementById("upload-container");
+        container.classList.add("fade_in");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="upload-container" id="upload-container">
+      <div class="header">
+        <button
+          class="back_button"
+          id="back_button"
+          data-url="./managerInterface.html"
+        >
+          < 返回
+        </button>
+        <h2>上传比赛数据(.CSV)</h2>
+      </div>
+      <form
+        id="uploadForm"
+        action="/upload"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="file-input" id="fileInputBox">
+          <label for="file">点击选择文件或拖动到此处</label>
+          <input type="file" name="file" id="file" required />
+        </div>
+        <button type="submit" class="submit-btn">上传文件</button>
+      </form>
+      <p id="uploadStatus" class="status"></p>
+    </div>
+    <script src="../js/uploadfile.js"></script>
+  </body>
+</html>

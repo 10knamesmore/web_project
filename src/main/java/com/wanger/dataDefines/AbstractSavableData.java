@@ -1,4 +1,4 @@
-package com.wanger.data;
+package com.wanger.dataDefines;
 
 public interface AbstractSavableData {
 }
