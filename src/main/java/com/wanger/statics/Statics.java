@@ -18,24 +18,12 @@ public class Statics {
     public static final Match TEST_MATCH_DATA;
     
     static {
-        //初始化TEAM_A
-        Coach testCoach1 = Coaches.getCoach("李鹏霄", "001", "002", "003", "004", "005", "006");
-        Coach testCoach2 = Coaches.getCoach("李铁", "007", "008", "009", "010", "011", "012");
-        ArrayList<Coach> coaches = new ArrayList<>();
-        coaches.add(testCoach1);
-        coaches.add(testCoach2);
-        TEST_TEAM_DATA_A = new Team("中国", coaches);
-        String teamA_ID = TeamDataOperation.Save(TEST_TEAM_DATA_A);
-        
+        TEST_TEAM_DATA_A = new Team("中国",new ArrayList<>());
+        String teamA_ID = TeamDataOperation.save(TEST_TEAM_DATA_A);
         
         //初始化TEAM_B
-        Coach testCoach3 = Coaches.getCoach("赫尔韦·雷纳德", "013", "014", "015", "016", "017", "018");
-        Coach testCoach4 = Coaches.getCoach("法赫德·阿尔穆瓦拉德", "019", "020", "021", "022", "023", "024");
-        ArrayList<Coach> coachesB = new ArrayList<>();
-        coachesB.add(testCoach3);
-        coachesB.add(testCoach4);
-        TEST_TEAM_DATA_B = new Team("沙特", coachesB);
-        String teamB_ID = TeamDataOperation.Save(TEST_TEAM_DATA_B);
+        TEST_TEAM_DATA_B = new Team("沙特",new ArrayList<>());
+        String teamB_ID = TeamDataOperation.save(TEST_TEAM_DATA_B);
         
         //初始化比赛结果
         LocalDate matchDate = LocalDate.of(2022, 3, 20);

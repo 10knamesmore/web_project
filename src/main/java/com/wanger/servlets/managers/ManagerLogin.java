@@ -1,4 +1,4 @@
-package com.wanger.servlets;
+package com.wanger.servlets.managers;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

@@ -17,24 +17,28 @@ body {
 .container {
   background-color: #fff;
   padding: 20px 40px;
+  max-width: 350px;
   border-radius: 10px;
   box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
   text-align: center;
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.3s ease;
-  will-change: opacity, transform;
+  opacity: 0; /* 初始透明 */
+  transition: opacity 0.3s ease; /* 渐隐渐显过渡 */
+  will-change: opacity, visibility;
 }
+
 .container:hover {
   transform: translateY(-8px);
   will-change: transform;
 }
+
 .container h2 {
   font-size: 24px;
   color: #4b6cb7;
   margin-bottom: 20px;
 }
+
 .container .back_button {
-  margin-right: 10px; /* 按钮和标题之间的间距 */
+  margin-right: 10px;
   padding: 5px 5px;
   font-size: 16px;
   cursor: pointer;
@@ -44,45 +48,180 @@ body {
   border-radius: 10px;
   transition: background-color 0.3s ease;
 }
+
 .container .back_button:hover {
   background-color: #182848;
 }
 
-.header1 {
-    /* padding-bottom: 0; */
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.container .header1 {
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.header2 {
+
+.container .header2 {
   display: flex;
   justify-content: center;
 }
 
-.buttons .choice_but {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #4b6cb7;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-.buttons .choice_but:hover {
-    background-color: #182848;
-    transform: scale(1.05);
+#intro_container .buttons .choice_but {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4b6cb7;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+#intro_container .buttons .choice_but:hover {
+  background-color: #182848;
+  transform: scale(1.05);
+}
+
+#by_team_container .team_name_input_div .team_name_input_box {
+  width: 100%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  border: 2px solid #4b6cb7;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #4b6cb7;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+#by_team_container .team_name_input_div .team_name_input_box:hover {
+  border-color: #2a416e;
+  background-color: #f6f6f6;
+  box-shadow: 0 0 8px rgba(72, 108, 183, 0.5);
+}
+
+#by_team_container .team_name_input_div .team_name_input_box:focus {
+  border-color: #182848;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 12px rgba(72, 108, 183, 0.5);
+}
+
+#by_team_container .team_name_input_div .submit_button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4b6cb7;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#by_team_container .team_name_input_div .submit_button:hover {
+  background-color: #182848;
+  transform: scale(1.05);
+}
+#by_match_container .match_info_input_div #match_info_type_selector {
+  width: 100%;
+  padding: 3px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  border: 2px solid #4b6cb7;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #4b6cb7;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+#by_match_container .match_info_input_div #match_info_type_selector:hover {
+  border-color: #2a416e;
+  background-color: #f6f6f6;
+  box-shadow: 0 0 8px rgba(72, 108, 183, 0.5);
+}
+#by_match_container .match_info_input_div #match_info_type_selector:focus {
+  border-color: #182848;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 12px rgba(72, 108, 183, 0.5);
+}
+
+#by_match_container .match_info_input_div #match_info_input {
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  border: 2px solid #4b6cb7;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #4b6cb7;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+#by_match_container .match_info_input_div #match_info_input:hover {
+  border-color: #2a416e;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 8px rgba(72, 108, 183, 0.5);
+}
+#by_match_container .match_info_input_div #match_info_input:focus {
+  border-color: #182848;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 12px rgba(72, 108, 183, 0.5);
+}
+#by_match_container .match_info_input_div .submit_button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4b6cb7;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+#by_match_container .match_info_input_div .submit_button:hover {
+  background-color: #182848;
+  transform: scale(1.05);
+}
+/* 用于控制渐隐效果 */
 .fade_out {
-    pointer-events: none;
-    opacity: 0;
-    will-change: opacity;
+  pointer-events: none; /* 禁止点击 */
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* 隐藏时延迟处理visibility */
+  will-change: opacity, visibility;
 }
 
+/* 用于控制渐显效果 */
 .fade_in {
-    opacity: 1;
-    will-change: opacity;
+  opacity: 1;
+  visibility: visible; /* 显示元素 */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* 显示时立即恢复 */
+  will-change: opacity, visibility;
+}
+
+/* 用于控制显示或隐藏的状态 */
+.hidden {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }

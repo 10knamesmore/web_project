@@ -1,10 +1,17 @@
-import com.wanger.mongoDB.MongoOperation;
+import com.wanger.exceptions.DocumentExistException;
+import com.wanger.mongoDB.MatchDataOperation;
+import com.wanger.mongoDB.TeamDataOperation;
 import com.wanger.statics.Statics;
 
 
 public class Test {
     public static void main(String[] args) {
-//        String s = MongoOperation.SaveData(Statics.TEST_MATCH_DATA,Statics.MATCH_COLLECTION_NAME);
-//        System.out.println(s);
+
+        try {
+            MatchDataOperation.save(Statics.TEST_MATCH_DATA);
+        } catch (DocumentExistException e) {
+            System.out.println("document 存在");
+        }
+        //        System.out.println("Save result: " + save1 + ", " + save2 + ", " + save3);
     }
 }
