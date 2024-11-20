@@ -208,6 +208,7 @@ iframe {
     align-items: center;
     padding: 15px;
     background: #ebeeef;
+
 }
 
 
@@ -443,9 +444,11 @@ input.input100 {
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
+    will-change: transform;
 }
 
 .login100-form-btn:hover {
+    transform: scale(1.05);
     background-color: #333333;
 }
 

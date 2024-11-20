@@ -1,85 +1,86 @@
-const intro_back_button = document.getElementById("intro_back_button")
-const intro_container = document.getElementById("intro_container")
-const by_team_container = document.getElementById("by_team_container")
-const match_info_type_selector = document.getElementById("match_info_type_selector")
-const match_info_input = document.getElementById("match_info_input")
+const introBackButton = document.getElementById("intro_back_button")
+const introContainer = document.getElementById("intro_container")
+const byTeamContainer = document.getElementById("by_team_container")
+const byMatchContainer = document.getElementById("by_match_container")
+const matchInfoTypeSelector = document.getElementById("match_info_type_selector")
+const matchInfoInput = document.getElementById("match_info_input")
 
-intro_back_button.addEventListener("click", (event) => {
-    intro_container.classList.remove("fade_in")
-    intro_container.classList.add("fade_out")
+introBackButton.addEventListener("click", (event) => {
+    introContainer.classList.remove("fade_in")
+    introContainer.classList.add("fade_out")
 
     const targetUrl = event.target.getAttribute("data-url")
 
     setTimeout(() => {
         window.location.href = targetUrl
-    }, 200)
+    }, 300)
 })
 
-match_info_type_selector.addEventListener("change", function () {
+matchInfoTypeSelector.addEventListener("change", function () {
     adapt_to_info_type()
 })
 function choose_search_team() {
-    intro_container.classList.remove("fade_in")
-    intro_container.classList.add("fade_out")
+    introContainer.classList.remove("fade_in")
+    introContainer.classList.add("fade_out")
 
-    by_team_container.classList.remove("fade_out")
-    by_team_container.classList.add("fade_in")
+    byTeamContainer.classList.remove("fade_out")
+    byTeamContainer.classList.add("fade_in")
 
     setTimeout(() => {
-        by_team_container.classList.remove("hidden")
-        intro_container.classList.add("hidden")
+        byTeamContainer.classList.remove("hidden")
+        introContainer.classList.add("hidden")
     }, 300)
 }
 function choose_search_match() {
-    intro_container.classList.remove("fade_in")
-    intro_container.classList.add("fade_out")
+    introContainer.classList.remove("fade_in")
+    introContainer.classList.add("fade_out")
 
-    by_match_container.classList.remove("fade_out")
-    by_match_container.classList.add("fade_in")
+    byMatchContainer.classList.remove("fade_out")
+    byMatchContainer.classList.add("fade_in")
 
     setTimeout(() => {
-        by_match_container.classList.remove("hidden")
-        intro_container.classList.add("hidden")
+        byMatchContainer.classList.remove("hidden")
+        introContainer.classList.add("hidden")
     }, 300)
 }
 
 function input_teamname_back() {
-    by_team_container.classList.remove("fade_in")
-    by_team_container.classList.add("fade_out")
+    byTeamContainer.classList.remove("fade_in")
+    byTeamContainer.classList.add("fade_out")
 
-    intro_container.classList.remove("fade_out")
-    intro_container.classList.add("fade_in")
+    introContainer.classList.remove("fade_out")
+    introContainer.classList.add("fade_in")
 
     setTimeout(() => {
-        intro_container.classList.remove("hidden")
-        by_team_container.classList.add("hidden")
+        introContainer.classList.remove("hidden")
+        byTeamContainer.classList.add("hidden")
     }, 300)
 }
 function input_match_back() {
-    by_match_container.classList.remove("fade_in")
-    by_match_container.classList.add("fade_out")
+    byMatchContainer.classList.remove("fade_in")
+    byMatchContainer.classList.add("fade_out")
 
-    intro_container.classList.remove("fade_out")
-    intro_container.classList.add("fade_in")
+    introContainer.classList.remove("fade_out")
+    introContainer.classList.add("fade_in")
 
     setTimeout(() => {
-        intro_container.classList.remove("hidden")
-        by_match_container.classList.add("hidden")
+        introContainer.classList.remove("hidden")
+        byMatchContainer.classList.add("hidden")
     }, 300)
 
 }
 
 function adapt_to_info_type() {
-    const selectedType = match_info_type_selector.value;
+    const selectedType = matchInfoTypeSelector.value;
     switch (selectedType) {
         case "matchDate":
         default:
-            match_info_input.type = "date"
+            matchInfoInput.type = "date"
             break;
         case "homeTeamName":
         case "guestTeamName":
         case "matchType":
-            match_info_input.type = "text"
+            matchInfoInput.type = "text"
             break;
     }
 }

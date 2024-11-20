@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>查看数据</title>
+    <link rel="stylesheet" href="../css/checkData.css" type="text/css" />
+    <script>
+      window.addEventListener("load", () => {
+        const container = document.getElementById("intro_container");
+        container.classList.add("fade_in");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container" id="intro_container">
+      <div class="header1">
+        <button
+          class="back_button"
+          id="check_back_button"
+          data-url="./managerInterface.html"
+        >
+          < 返回
+        </button>
+      </div>
+      <dir class="header2">
+        <h2>请选择要查看的数据</h2>
+      </dir>
+      <div class="buttons">
+        <button class="choice_but" onclick="chooseCheckTeams()">
+          球队统计
+        </button>
+        <button class="choice_but" onclick="choseCheckMatches()">
+          全部比赛
+        </button>
+      </div>
+    </div>
+
+    <div class="container hidden" id="check_team_container">
+      <div class="header1">
+        <button
+          class="back_button"
+          id="team_back_button"
+          onclick="checkTeamsBack()"
+        >
+          < 返回
+        </button>
+      </div>
+      <div class="header2">
+        <h2>球队数据统计</h2>
+      </div>
+      <table>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+        </tr>
+      </table>
+    </div>
+    <script src="../js/checkData.js"></script>
+  </body>
+</html>

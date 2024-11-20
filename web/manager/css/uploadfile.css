@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 body {
   font-family: Poppins-Regular, sans-serif;
@@ -22,7 +22,7 @@ body {
   box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.15);
   text-align: center;
   opacity: 0;
-  transition: opacity 0.2s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   will-change: opacity,transform;
 }
 .upload-container:hover {
@@ -43,13 +43,13 @@ body {
 .upload-container .back_button {
   margin-right: 10px; /* 按钮和标题之间的间距 */
   margin-bottom: 10px;
-  padding: 5px 5px;
+  padding: 6px 6px;
   font-size: 16px;
   cursor: pointer;
   background-color: #4b6cb7;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s ease;
 }
 

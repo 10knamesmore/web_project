@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: Popings-Regular, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: #333333;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity;
+}
+
+.container:hover {
+  transform: translateY(-8px);
+  will-change: transform;
+}
+
+.container h2 {
+  font-size: 24px;
+  color: #4b6cb7;
+  margin-bottom: 20px;
+}
+
+.container .back_button {
+  margin-right: 10px;
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #4b6cb7;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+.container .back_button:hover {
+  background-color: #182848;
+}
+
+.container .header1 {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .header2 {
+  display: flex;
+  justify-content: center;
+}
+
+#intro_container .buttons .choice_but {
+  margin: 10px;
+  padding: 10px 16px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4b6cb7;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#intro_container .buttons .choice_but:hover {
+  background-color: #182848;
+  transform: scale(1.05);
+}
+
+.container #check_team_container {
+  background-color: #fff;
+}
+
+.fade_out {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, visibility;
+}
+
+.fade_in {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, visibility;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}

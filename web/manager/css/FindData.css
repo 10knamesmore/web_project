@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
   text-align: center;
   opacity: 0; /* 初始透明 */
   transition: opacity 0.3s ease; /* 渐隐渐显过渡 */
-  will-change: opacity, visibility;
+  will-change: opacity;
 }
 
 .container:hover {
@@ -39,8 +39,8 @@ body {
 
 .container .back_button {
   margin-right: 10px;
-  padding: 5px 5px;
-  font-size: 16px;
+  padding: 8px 8px;
+  font-size: 14px;
   cursor: pointer;
   background-color: #4b6cb7;
   color: white;

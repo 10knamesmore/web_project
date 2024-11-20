@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="ROOT">
+  <artifact type="war" name="ROOT">
     <output-path>$PROJECT_DIR$/out/artifacts/ROOT</output-path>
     <root id="archive" name="ROOT.war">
       <element id="directory" name="WEB-INF">
@@ -7,16 +7,16 @@
           <element id="module-output" name="webManager" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.4.12" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.4.12" />
-          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.17.1" />
-          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.17.1" />
-          <element id="library" level="project" name="Maven: org.mongodb:bson:5.2.0" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: org.mongodb:mongodb-driver-sync:5.2.0" />
+          <element id="library" level="project" name="Maven: org.mongodb:bson:5.2.0" />
           <element id="library" level="project" name="Maven: org.mongodb:mongodb-driver-core:5.2.0" />
           <element id="library" level="project" name="Maven: org.mongodb:bson-record-codec:5.2.0" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.17.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.17.1" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.17.1" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.4.12" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.4.12" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="webManager/web/Web" />
