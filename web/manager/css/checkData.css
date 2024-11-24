@@ -84,6 +84,107 @@ body {
   background-color: #fff;
 }
 
+.data_table_wrapper {
+  max-height: 600px;
+  overflow-y: auto;
+}
+/* 滚动条整体样式 */
+.data_table_wrapper::-webkit-scrollbar {
+  width: 10px; /* 垂直滚动条的宽度 */
+}
+
+/* 滚动条轨道（背景） */
+.data_table_wrapper::-webkit-scrollbar-track {
+  background: #f4f4f4; /* 滑轨背景色 */
+  border-radius: 10px; /* 圆角滑轨 */
+}
+
+/* 滚动条滑块（可拖动部分） */
+.data_table_wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px; /* 滑块圆角 */
+  transition: width 0.3s ease; /* 仅过渡背景色 */
+}
+
+/* 鼠标悬停时滑块样式 */
+.data_table_wrapper::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.data_table {
+  border-collapse: collapse;
+  margin: 25px 0px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.1);
+}
+
+.data_table th,
+.data_table td {
+  border: none;
+  padding: 8px;
+}
+
+/* 标题栏 */
+.data_table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #ededed;
+  color: #333;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.data_table th,
+.data_table td {
+  padding: 12px, 15px;
+}
+
+/* 数据行和数据格 */
+.data_table tbody tr,
+td {
+  transition: background-color 0.3s ease;
+}
+
+/* 偶数行 */
+.data_table tbody tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+/* 数据行悬浮背景 */
+.data_table tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+/* 数据格悬浮背景 */
+.data_table tbody td:hover {
+  background-color: #ebebeb;
+}
+
+.data_table tbody td button {
+  margin-right: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #e53935;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.data_table tbody td button:hover {
+  background-color: #c62828;
+}
+
+.data_table tbody td button:active {
+  background-color: #b71c1c; /* 按下更深的红色 */
+  transform: scale(0.95); /* 点击时缩小按钮 */
+}
+
 .fade_out {
   pointer-events: none;
   opacity: 0;

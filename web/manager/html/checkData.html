@@ -13,7 +13,7 @@
     </script>
   </head>
   <body>
-    <div class="container" id="intro_container">
+    <div class="container hidden" id="intro_container">
       <div class="header1">
         <button
           class="back_button"
@@ -36,29 +36,40 @@
       </div>
     </div>
 
-    <div class="container hidden" id="check_team_container">
+    <div class="container fade_in" id="check_matches_container">
+      <!-- <div class="container hidden" id="check_matches_container"> -->
       <div class="header1">
         <button
           class="back_button"
-          id="team_back_button"
-          onclick="checkTeamsBack()"
+          id="matches_back_button"
+          onclick="checkMatchesBack();"
         >
           < 返回
         </button>
       </div>
       <div class="header2">
-        <h2>球队数据统计</h2>
+        <h2>全部比赛</h2>
       </div>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-        </tr>
-      </table>
+      <div class="data_table_wrapper">
+        <div class="matches_table">
+          <table class="data_table" id="matches_table">
+            <thead>
+              <tr>
+                <th>赛事</th>
+                <th>比赛时间</th>
+                <th>主队</th>
+                <th>比分</th>
+                <th>客队</th>
+                <th>赛果</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 在这动态生成rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <script src="../js/checkData.js"></script>
   </body>
