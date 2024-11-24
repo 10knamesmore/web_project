@@ -1,13 +1,13 @@
 package com.wanger.dataDefines;
 
-public class MatchResult {
+public class MatchResultForTeam {
     private String matchId;
     private int score;
     
-    public MatchResult() {
+    public MatchResultForTeam() {
     }
     
-    public MatchResult(String matchId, int score) {
+    public MatchResultForTeam(String matchId, int score) {
         this.matchId = matchId;
         this.score = score;
     }
@@ -27,4 +27,5 @@ public class MatchResult {
     public void setScore(int score) {
         this.score = score;
     }
+    
 }

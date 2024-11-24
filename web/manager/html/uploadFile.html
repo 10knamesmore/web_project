@@ -5,9 +5,34 @@
     <title>上传数据</title>
     <link rel="stylesheet" href="../css/uploadfile.css" type="text/css" />
     <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const status = urlParams.get("status");
+
+      switch (status) {
+        case "invalid_file":
+          alert("文件格式错误!");
+          window.location.href = "./uploadFile.html";
+          break;
+        case "success":
+          alert("上传成功!");
+          window.location.href = "./uploadFile.html";
+        default:
+          break;
+      }
+    </script>
+    <script>
       window.addEventListener("load", () => {
         const container = document.getElementById("upload-container");
         container.classList.add("fade_in");
+
+        // 显示加载页面逻辑
+        const form = document.getElementById("uploadForm");
+        const loadingOverlay = document.getElementById("loading-overlay");
+
+        form.addEventListener("submit", (e) => {
+          // 显示加载页面
+          loadingOverlay.style.display = "block";
+        });
       });
     </script>
   </head>
@@ -25,18 +50,27 @@
       </div>
       <form
         id="uploadForm"
-        action="/upload"
+        action="/manager/upload"
         method="post"
         enctype="multipart/form-data"
       >
         <div class="file-input" id="fileInputBox">
-          <label for="file">点击选择文件或拖动到此处</label>
-          <input type="file" name="file" id="file" required />
+          <label for="file" id="fileLabel"
+            >点击选择文件或拖动到此处<br />
+            文件名示例: "中国.csv"
+          </label>
+          <input type="file" name="CSV_file" id="file" required />
         </div>
         <button type="submit" class="submit-btn">上传文件</button>
       </form>
       <p id="uploadStatus" class="status"></p>
     </div>
+    <div id="loading-overlay" class="loading-overlay" style="display: none">
+      <div class="loading-message">
+        <p>正在上传文件，请稍候...</p>
+      </div>
+    </div>
+
     <script src="../js/uploadfile.js"></script>
   </body>
 </html>

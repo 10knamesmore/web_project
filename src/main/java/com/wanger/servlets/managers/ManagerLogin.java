@@ -18,7 +18,7 @@ public class ManagerLogin extends HttpServlet {
         if("123".equals(username) && "123".equals(password)) {
             resp.sendRedirect("/manager/html/managerInterface.html");
         } else {
-            resp.sendRedirect("/manager/html/managerLogin.html?error=invalid");
+            resp.sendRedirect("/manager/html/managerLogin.html?status=invalid");
         }
     }
 }

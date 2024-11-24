@@ -15,11 +15,12 @@ public class Match implements AbstractSavableData {
         super();
     }
     
-    public Match(LocalDate matchDate, String homeTeamId, String teamA, String teamB, Result result, String matchType) {
+    public Match(LocalDate matchDate, String homeTeamId, String teamAId, String teamBId, Result result,
+                 String matchType) {
         this.matchDate = matchDate;
         this.homeTeamId = homeTeamId;
-        this.teamAId = teamA;
-        this.teamBId = teamB;
+        this.teamAId = teamAId;
+        this.teamBId = teamBId;
         this.result = result;
         this.matchType = matchType;
     }
@@ -76,6 +77,14 @@ public class Match implements AbstractSavableData {
         return matchType;
     }
     
+    public Integer getTeamAScore() {
+        return result.getTeamAScores();
+    }
+    
+    public Integer getTeamBScore() {
+        return result.getTeamBScores();
+    }
+    
     public void setMatchType(String matchType) {
         this.matchType = matchType;
     }
@@ -83,6 +92,7 @@ public class Match implements AbstractSavableData {
     public static class Result {
         private Integer teamAScores;
         private Integer teamBScores;
+        
         
         public Integer getTeamAScores() {
             return teamAScores;

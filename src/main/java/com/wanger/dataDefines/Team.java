@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Team implements AbstractSavableData {
     private String ID;
     private String teamName;
-    private ArrayList<MatchResult> matchResults;
+    private ArrayList<MatchResultForTeam> matchResultForTeams;
     
     public Team() {
         super();
@@ -15,13 +15,13 @@ public class Team implements AbstractSavableData {
         this.teamName = teamName;
     }
     
-    public Team(String teamName, ArrayList<MatchResult> matchResults) {
+    public Team(String teamName, ArrayList<MatchResultForTeam> matchResultForTeams) {
         this.teamName = teamName;
-        this.matchResults = matchResults;
+        this.matchResultForTeams = matchResultForTeams;
     }
     
-    public ArrayList<MatchResult> getMatchResults() {
-        return matchResults;
+    public ArrayList<MatchResultForTeam> getMatchResults() {
+        return matchResultForTeams;
     }
     
     public String getID() {
@@ -32,8 +32,8 @@ public class Team implements AbstractSavableData {
         return teamName;
     }
     
-    public void setMatchResults(ArrayList<MatchResult> matchResults) {
-        this.matchResults = matchResults;
+    public void setMatchResults(ArrayList<MatchResultForTeam> matchResultForTeams) {
+        this.matchResultForTeams = matchResultForTeams;
     }
     
     public void setTeamName(String teamName) {
