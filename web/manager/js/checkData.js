@@ -6,13 +6,6 @@ const checkMatchesContainer = document.getElementById("check_matches_container")
 const baseUrl = window.location.protocol + "//" + window.location.host
 const getMatchesDataApiUrl = baseUrl + "/api/matchesdata"
 
-function getMatchesData() {
-    fetch(getMatchesDataApiUrl)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-}
 
 backButton.addEventListener("click", (event) => {
     introContainer.classList.remove("fade_in")
@@ -51,8 +44,47 @@ function checkTeamsBack() {
     }, 300)
 }
 
+function getMatchesData() {
+    return fetch(getMatchesDataApiUrl)
+        .then((response) => {
+            return response.json();
+        })
+}
+
 function choseCheckMatches() {
+    const tableBody = document.getElementById("matches_table").querySelector("tbody");
+    tableBody.innerHTML = ""; // Clear any existing rows
+
+    // getMatchesData.forEach((match) => {
+    //     const row = document.createElement("tr");
+    //     row.innerHTML = `
+    //     <td>${match.matchType}</td>
+    //     <td>${match.matchdate}</td>
+    //     <td>${match.homeTeamName}</td>
+    //   <td>${match.homeTeamScore}</td>
+    //   <td>${match.awayTeamScore}</td>
+    //   <td>${match.awayTeamName}</td>
+    //   <td><button>删除</button></td>
+    //   `;
+    //   tableBody.appendChild(row);
+    // });
     getMatchesData()
+        .then(data => {
+            data.forEach((match) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                <td>${match.matchType}</td>
+                <td>${match.matchDate}</td>
+                <td>${match.homeTeamName}</td>
+              <td>${match.homeTeamScore}</td>
+              <td>${match.awayTeamScore}</td>
+              <td>${match.awayTeamName}</td>
+              <td><button>删除</button></td>
+              `;
+                tableBody.appendChild(row);
+            });
+        })
+
     // Hide other containers and show the matches container
     introContainer.classList.remove("fade_in")
     introContainer.classList.add("fade_out")
@@ -67,130 +99,8 @@ function choseCheckMatches() {
 
 
 }
-// Simulated JSON data from backend
-const matchesData = [
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/10/15",
-        homeTeam: "日本",
-        score: "1:1",
-        awayTeam: "澳大利亚",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-    {
-        event: "世外亚洲",
-        date: "2024/11/14",
-        homeTeam: "澳大利亚",
-        score: "0:0",
-        awayTeam: "沙特",
-        result: "平",
-    },
-];
-// Populate the table with data
-const tableBody = document.getElementById("matches_table").querySelector("tbody");
-tableBody.innerHTML = ""; // Clear any existing rows
 
-matchesData.forEach((match) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-  <td>${match.event}</td>
-  <td>${match.date}</td>
-  <td>${match.homeTeam}</td>
-  <td>${match.score}</td>
-  <td>${match.awayTeam}</td>
-  <td>${match.result}</td>
-  <td><button>删除</button></td>
-`;
-    tableBody.appendChild(row);
-});
+// Populate the table with data
 
 function checkMatchesBack() {
     // Hide the matches container and go back to intro
