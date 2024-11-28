@@ -21,7 +21,7 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/manager/upload")
 @MultipartConfig
-public class UploadFile extends HttpServlet {
+public class UploadFileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Part file = req.getPart("CSV_file");

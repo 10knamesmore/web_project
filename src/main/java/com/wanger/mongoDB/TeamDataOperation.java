@@ -31,6 +31,9 @@ public class TeamDataOperation extends MongoOperation {
     private static final MongoCollection<Document> collection = MongoOperation.GetCollection(mongoClient,
                                                                                              Statics.TEAM_COLLECTION_NAME);
     
+    private TeamDataOperation() {
+    }
+    
     /**
      * 将 Team 对象保存到由 Statics.TEAM_COLLECTION_NAME 指定的 MongoDB 集合中。
      *
@@ -136,7 +139,7 @@ public class TeamDataOperation extends MongoOperation {
      * @param teamName 要找的team的name
      * @return team的id, 如果为"None"则表示没有
      */
-    public static String findTeam(String teamName) {
+    public static String findTeamByName(String teamName) {
         Document filter = new Document("teamName", teamName);
         Document document = collection.find(filter)
                                       .first();
@@ -146,6 +149,14 @@ public class TeamDataOperation extends MongoOperation {
         } else {
             return "None";
         }
+    }
+    
+    public static String findTeamById(String teamId) {
+        String name = Objects.requireNonNull(collection.find(new Document("_id", new ObjectId(teamId)))
+                                                       .first())
+                             .get("teamName")
+                             .toString();
+        return Objects.requireNonNullElse(name, "None");
     }
     
     public static String createTeamDocument(String teamName) {

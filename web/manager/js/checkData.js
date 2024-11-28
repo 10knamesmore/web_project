@@ -3,6 +3,17 @@ const introContainer = document.getElementById("intro_container")
 const checkTeamsContainer = document.getElementById("check_team_container")
 const checkMatchesContainer = document.getElementById("check_matches_container")
 
+const baseUrl = window.location.protocol + "//" + window.location.host
+const getMatchesDataApiUrl = baseUrl + "/api/matchesdata"
+
+function getMatchesData() {
+    fetch(getMatchesDataApiUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+}
+
 backButton.addEventListener("click", (event) => {
     introContainer.classList.remove("fade_in")
     introContainer.classList.add("fade_out")
@@ -41,6 +52,7 @@ function checkTeamsBack() {
 }
 
 function choseCheckMatches() {
+    getMatchesData()
     // Hide other containers and show the matches container
     introContainer.classList.remove("fade_in")
     introContainer.classList.add("fade_out")
@@ -53,7 +65,7 @@ function choseCheckMatches() {
         checkMatchesContainer.classList.remove("hidden")
     }, 300)
 
-    
+
 }
 // Simulated JSON data from backend
 const matchesData = [

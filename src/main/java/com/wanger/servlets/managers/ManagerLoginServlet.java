@@ -8,13 +8,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/managerLogin")
-public class ManagerLogin extends HttpServlet {
+public class ManagerLoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         
-        /*TODO*/
+        /*TODO 补充从数据库中查询用户信息的代码*/
         if("123".equals(username) && "123".equals(password)) {
             resp.sendRedirect("/manager/html/managerInterface.html");
         } else {

@@ -12,11 +12,19 @@ import com.wanger.statics.Statics;
 import org.bson.Document;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MatchDataOperation extends MongoOperation {
     private static final MongoClient mongoClient = MongoOperation.GetStdMongoClient();
     private static final MongoCollection<Document> collection = GetCollection(mongoClient,
                                                                               Statics.MATCH_COLLECTION_NAME);
+    
+    private MatchDataOperation() {
+    
+    }
+    
     
     /**
      * 将 Team 对象保存到由 Statics.TEAM_COLLECTION_NAME 指定的 MongoDB 集合中。
@@ -52,8 +60,7 @@ public class MatchDataOperation extends MongoOperation {
                 }
             }
             Document document = new Document("$set", documentToInset);
-            collection.updateOne(documentToInset, document,
-                                 new UpdateOptions().upsert(true));
+            collection.updateOne(documentToInset, document, new UpdateOptions().upsert(true));
             
             Document updatedDoc = collection.find(documentToInset)
                                             .first();
@@ -84,4 +91,50 @@ public class MatchDataOperation extends MongoOperation {
             throw new DataNotFoundException("找不到数据");
         }
     }
+    
+    /**
+     * 读取所有比赛的数据,以JSON格式的字符串返回
+     *
+     * @return JSON 格式的字符串
+     */
+    public static String ReadAll() {
+        List<Document> result = new ArrayList<>();
+        try {
+            collection.find()
+                      .forEach(document -> {
+                          String matchType = document.getString("matchType");
+                          String matchDate = document.getString("matchDate");
+                          String homeTeamId = document.getString("homeTeamId");
+                          String teamAId = document.getString("teamAId");
+                          String teamBId = document.getString("teamBId");
+                          Document resultDocument = document.get("result", Document.class);
+                          Integer teamAScore = resultDocument.getInteger("teamAScores");
+                          Integer teamBScore = resultDocument.getInteger("teamBScores");
+                          
+                          String homeTeamName = TeamDataOperation.findTeamById(homeTeamId);
+                          String awayTeamName = homeTeamId.equals(teamAId) ?
+                                  TeamDataOperation.findTeamById(teamBId) : TeamDataOperation.findTeamById(teamAId);
+                          
+                          Integer homeTeamScore = homeTeamId.equals(teamAId) ? teamAScore : teamBScore;
+                          Integer awayTeamScore = homeTeamId.equals(teamAId) ? teamBScore : teamAScore;
+                          
+                          Document doc = new Document()
+                                  .append("matchType", matchType)
+                                  .append("matchDate", matchDate)
+                                  .append("homeTeamName", homeTeamName)
+                                  .append("awayTeamName", awayTeamName)
+                                  .append("homeTeamScore", homeTeamScore)
+                                  .append("awayTeamScore", awayTeamScore);
+                          
+                          result.add(doc);
+                      });
+        } catch (Exception e) {
+            throw new RuntimeException("读取数据时发生错误: " + e.getMessage());
+        }
+        
+        return result.stream()
+                     .map(Document::toJson)
+                     .collect(Collectors.joining(",", "[", "]"));
+    }
 }
+

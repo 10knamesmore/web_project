@@ -30,6 +30,6 @@ bin/
 .DS_Store
 
 # IDEA
-.idea
+.idea/
 
 temp/

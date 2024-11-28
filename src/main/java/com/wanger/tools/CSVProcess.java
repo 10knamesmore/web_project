@@ -38,11 +38,11 @@ public class CSVProcess {
                 Match.Result matchResult = Matches.parse(line[3]);
                 String guestTeamName = line[4];
                 
-                String homeTeamId = TeamDataOperation.findTeam(homeTeamName);
+                String homeTeamId = TeamDataOperation.findTeamByName(homeTeamName);
                 if ("None".equals(homeTeamId)) {
                     homeTeamId = TeamDataOperation.createTeamDocument(homeTeamName);
                 }
-                String guestTeamId = TeamDataOperation.findTeam(guestTeamName);
+                String guestTeamId = TeamDataOperation.findTeamByName(guestTeamName);
                 if ("None".equals(guestTeamId)) {
                     guestTeamId = TeamDataOperation.createTeamDocument(guestTeamName);
                 }
