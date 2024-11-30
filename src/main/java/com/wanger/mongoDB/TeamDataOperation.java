@@ -11,17 +11,13 @@ import com.wanger.exceptions.DataNotFoundException;
 import com.wanger.exceptions.SavedDataClassException;
 import com.wanger.exceptions.TeamNotExitsException;
 import com.wanger.statics.Statics;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Objects;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 
 import static com.mongodb.client.model.Updates.push;
 import static com.mongodb.client.model.Updates.set;
@@ -169,4 +165,36 @@ public class TeamDataOperation extends MongoOperation {
                       .toString();
     }
     
+    /**
+     * 获取所有team的name
+     *
+     * @return 一个包含所有team的name的list
+     */
+    public static List<String> getAllTeamsName() {
+        ArrayList<String> result = new ArrayList<>();
+        FindIterable<Document> documents = collection.find();
+        for (Document document : documents) {
+            result.add(document.getString("teamName"));
+        }
+        return result;
+    }
+    
+    /**
+     * 获取所有team的id和name
+     *
+     * @return 一个包含所有team的id和name的map的list
+     */
+    public static List<Map<String, String>> getAllTeamsData() {
+        ArrayList<Map<String, String>> result = new ArrayList<>();
+        FindIterable<Document> documents = collection.find();
+        for (Document document : documents) {
+            Map<String, String> map = new HashMap<>();
+            map.put("id", document.get("_id")
+                                  .toString());
+            map.put("name", document.get("teamName")
+                                    .toString());
+            result.add(map);
+        }
+        return result;
+    }
 }

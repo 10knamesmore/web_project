@@ -11,7 +11,7 @@ body {
   align-items: center;
   height: 100vh;
   background: linear-gradient(135deg, #4b6cb7, #182848);
-  color: #333;
+    color: #333333;
 }
 
 .container {
@@ -46,10 +46,11 @@ body {
   color: white;
   border: none;
   border-radius: 10px;
-  transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .container .back_button:hover {
+    transform: scale(1.05);
   background-color: #182848;
 }
 

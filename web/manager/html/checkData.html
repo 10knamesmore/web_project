@@ -20,9 +20,9 @@
       <button class="back_button" id="check_back_button" data-url="./managerInterface.html">
         < 返回 </button>
     </div>
-    <dir class="header2">
+    <div class="header2">
       <h2>请选择要查看的数据</h2>
-    </dir>
+    </div>
     <div class="buttons">
       <button class="choice_but" onclick="chooseCheckTeams()">
         球队统计
@@ -62,7 +62,8 @@
       </div>
     </div>
   </div>
-  <div class="container" id="check_teams_container">
+
+  <div class="container hidden" id="check_teams_container">
     <div class="header1">
       <button class="back_button" id="teams_back_button" onclick="checkTeamsBack();">
         < 返回 </button>
@@ -70,16 +71,28 @@
     <div class="header2">
       <h2>全部比赛</h2>
     </div>
-    <aside class="sidebar">
-      <h2>选择队伍</h2>
-      <ul id="team_list">
+    <div class="data_container">
+      <aside class="sidebar">
+        <h2>选择队伍</h2>
+        <ul id="team_list">
+        </ul>
+      </aside>
 
-      </ul>
-    </aside>
-
-    <main class="teams_content">
-      <div id="chart"></div>
-    </main>
+      <main class="teams_content">
+        <div id="chart"></div>
+        <div id="table_container">
+          <table id="matches_data_table">
+            <thead>
+            <th>比赛性质</th>
+            <th>日期</th>
+            <th>对手</th>
+            <th>进球数</th>
+            </thead>
+            <tbody id="matches_data_tablebody"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
   </div>
   <script src="../js/checkData.js"></script>
 </body>

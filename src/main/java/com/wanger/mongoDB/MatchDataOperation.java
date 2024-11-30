@@ -1,7 +1,9 @@
 package com.wanger.mongoDB;
 
+import com.google.gson.Gson;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
 import com.wanger.dataDefines.AbstractSavableData;
 import com.wanger.exceptions.DataNotFoundException;
@@ -113,19 +115,18 @@ public class MatchDataOperation extends MongoOperation {
                           Integer teamBScore = resultDocument.getInteger("teamBScores");
                           
                           String homeTeamName = TeamDataOperation.findTeamById(homeTeamId);
-                          String awayTeamName = homeTeamId.equals(teamAId) ?
-                                  TeamDataOperation.findTeamById(teamBId) : TeamDataOperation.findTeamById(teamAId);
+                          String awayTeamName = homeTeamId.equals(teamAId) ? TeamDataOperation.findTeamById(
+                                  teamBId) : TeamDataOperation.findTeamById(teamAId);
                           
                           Integer homeTeamScore = homeTeamId.equals(teamAId) ? teamAScore : teamBScore;
                           Integer awayTeamScore = homeTeamId.equals(teamAId) ? teamBScore : teamAScore;
                           
-                          Document doc = new Document()
-                                  .append("matchType", matchType)
-                                  .append("matchDate", matchDate)
-                                  .append("homeTeamName", homeTeamName)
-                                  .append("awayTeamName", awayTeamName)
-                                  .append("homeTeamScore", homeTeamScore)
-                                  .append("awayTeamScore", awayTeamScore);
+                          Document doc = new Document().append("matchType", matchType)
+                                                       .append("matchDate", matchDate)
+                                                       .append("homeTeamName", homeTeamName)
+                                                       .append("awayTeamName", awayTeamName)
+                                                       .append("homeTeamScore", homeTeamScore)
+                                                       .append("awayTeamScore", awayTeamScore);
                           
                           result.add(doc);
                       });
@@ -137,5 +138,50 @@ public class MatchDataOperation extends MongoOperation {
                      .map(Document::toJson)
                      .collect(Collectors.joining(",", "[", "]"));
     }
+    
+    /**
+     * 根据 ID 查找比赛数据,以JSON格式的字符串返回
+     *
+     * @param id 要查找的比赛数据的 ID
+     * @return JSON 格式的字符串
+     */
+    public static String ReadById(String id) {
+        List<Document> result = new ArrayList<>();
+        collection.find(Filters.eq("teamAId", id))
+                  .forEach(document -> {
+                      String matchType = document.getString("matchType");
+                      String matchDate = document.getString("matchDate");
+                      String EnemyTeanName = TeamDataOperation.findTeamById(document.getString("teamBId"));
+                      Integer teamAScore = document.get("result", Document.class)
+                                                   .getInteger("teamAScores");
+                      
+                      result.add(new Document().append("matchType", matchType)
+                                               .append("matchDate", matchDate)
+                                               .append("enemyTeamName", EnemyTeanName)
+                                               .append("Scores", teamAScore));
+                  });
+        collection.find(Filters.eq("teamBId", id))
+                  .forEach(document -> {
+                      String matchType = document.getString("matchType");
+                      String matchDate = document.getString("matchDate");
+                      String EnemyTeamName = TeamDataOperation.findTeamById(document.getString("teamAId"));
+                      Integer Score = document.get("result", Document.class)
+                                              .getInteger("teamBScores");
+                      
+                      result.add(new Document().append("matchType", matchType)
+                                               .append("matchDate", matchDate)
+                                               .append("enemyTeamName", EnemyTeamName)
+                                               .append("Scores", Score));
+                  });
+        
+        result.sort((doc1, doc2) -> doc2.getString("matchDate")
+                                        .compareTo(doc1.getString("matchDate")));
+        if (result.isEmpty()) {
+            throw new DataNotFoundException("找不到数据");
+        } else {
+            return new Gson().toJson(result.toArray());
+        }
+    }
+    
 }
 
