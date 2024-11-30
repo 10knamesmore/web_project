@@ -1,6 +1,6 @@
 const backButton = document.getElementById("check_back_button")
 const introContainer = document.getElementById("intro_container")
-const checkTeamsContainer = document.getElementById("check_team_container")
+const checkTeamsContainer = document.getElementById("check_teams_container")
 const checkMatchesContainer = document.getElementById("check_matches_container")
 
 const baseUrl = window.location.protocol + "//" + window.location.host
@@ -17,6 +17,11 @@ backButton.addEventListener("click", (event) => {
         window.location.href = targetUrl
     }, 300)
 })
+
+async function getMatchesData() {
+    const response = await fetch(getMatchesDataApiUrl)
+    return await response.json()
+}
 
 function chooseCheckTeams() {
     introContainer.classList.remove("fade_in")
@@ -44,30 +49,11 @@ function checkTeamsBack() {
     }, 300)
 }
 
-function getMatchesData() {
-    return fetch(getMatchesDataApiUrl)
-        .then((response) => {
-            return response.json();
-        })
-}
 
 function choseCheckMatches() {
     const tableBody = document.getElementById("matches_table").querySelector("tbody");
     tableBody.innerHTML = ""; // Clear any existing rows
 
-    // getMatchesData.forEach((match) => {
-    //     const row = document.createElement("tr");
-    //     row.innerHTML = `
-    //     <td>${match.matchType}</td>
-    //     <td>${match.matchdate}</td>
-    //     <td>${match.homeTeamName}</td>
-    //   <td>${match.homeTeamScore}</td>
-    //   <td>${match.awayTeamScore}</td>
-    //   <td>${match.awayTeamName}</td>
-    //   <td><button>删除</button></td>
-    //   `;
-    //   tableBody.appendChild(row);
-    // });
     getMatchesData()
         .then(data => {
             data.forEach((match) => {

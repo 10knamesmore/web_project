@@ -4,6 +4,10 @@ const buttons = document.querySelectorAll(".redir_but");
 
 buttons.forEach(button => {
     button.addEventListener("click", (event) => {
+        setTimeout(() => {
+            window.location.href = targetUrl
+        }, 300)
+
         const container = document.getElementById("container");
 
         container.classList.remove("fade_in")
@@ -11,9 +15,6 @@ buttons.forEach(button => {
 
         const targetUrl = event.target.getAttribute("data-url")
 
-        setTimeout(() => {
-            window.location.href = targetUrl
-        }, 200)
     })
 })
 

@@ -1,76 +1,87 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>查看数据</title>
-    <link rel="stylesheet" href="../css/checkData.css" type="text/css" />
-    <script>
-      window.addEventListener("load", () => {
-        const container = document.getElementById("intro_container");
-        container.classList.add("fade_in");
-      });
-    </script>
-  </head>
-  <body>
-    <div class="container hidden" id="intro_container">
-      <div class="header1">
-        <button
-          class="back_button"
-          id="check_back_button"
-          data-url="./managerInterface.html"
-        >
-          < 返回
-        </button>
-      </div>
-      <dir class="header2">
-        <h2>请选择要查看的数据</h2>
-      </dir>
-      <div class="buttons">
-        <button class="choice_but" onclick="chooseCheckTeams()">
-          球队统计
-        </button>
-        <button class="choice_but" onclick="choseCheckMatches()">
-          全部比赛
-        </button>
-      </div>
-    </div>
 
-    <div class="container fade_in" id="check_matches_container">
-      <!-- <div class="container hidden" id="check_matches_container"> -->
-      <div class="header1">
-        <button
-          class="back_button"
-          id="matches_back_button"
-          onclick="checkMatchesBack();"
-        >
-          < 返回
-        </button>
-      </div>
-      <div class="header2">
-        <h2>全部比赛</h2>
-      </div>
-      <div class="data_table_wrapper">
-        <div class="matches_table">
-          <table class="data_table" id="matches_table">
-            <thead>
-              <tr>
-                <th>赛事</th>
-                <th>比赛时间</th>
-                <th>主队</th>
-                <th>主队得分</th>
-                <th>客队得分</th>
-                <th>客队</th>
-                <th>操作</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 在这动态生成rows -->
-            </tbody>
-          </table>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>查看数据</title>
+  <link rel="stylesheet" href="../css/checkData.css" type="text/css" />
+  <script>
+    window.addEventListener("load", () => {
+      const container = document.getElementById("intro_container");
+      container.classList.add("fade_in");
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container" id="intro_container">
+    <div class="header1">
+      <button class="back_button" id="check_back_button" data-url="./managerInterface.html">
+        < 返回 </button>
+    </div>
+    <dir class="header2">
+      <h2>请选择要查看的数据</h2>
+    </dir>
+    <div class="buttons">
+      <button class="choice_but" onclick="chooseCheckTeams()">
+        球队统计
+      </button>
+      <button class="choice_but" onclick="choseCheckMatches()">
+        全部比赛
+      </button>
+    </div>
+  </div>
+
+  <div class="container hidden" id="check_matches_container">
+    <div class="header1">
+      <button class="back_button" id="matches_back_button" onclick="checkMatchesBack();">
+        < 返回 </button>
+    </div>
+    <div class="header2">
+      <h2>全部比赛</h2>
+    </div>
+    <div class="data_table_wrapper">
+      <div class="matches_table">
+        <table class="data_table" id="matches_table">
+          <thead>
+            <tr>
+              <th>赛事</th>
+              <th>比赛时间</th>
+              <th>主队</th>
+              <th>主队得分</th>
+              <th>客队得分</th>
+              <th>客队</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 在这动态生成rows -->
+          </tbody>
+        </table>
       </div>
     </div>
-    <script src="../js/checkData.js"></script>
-  </body>
+  </div>
+  <div class="container" id="check_teams_container">
+    <div class="header1">
+      <button class="back_button" id="teams_back_button" onclick="checkTeamsBack();">
+        < 返回 </button>
+    </div>
+    <div class="header2">
+      <h2>全部比赛</h2>
+    </div>
+    <aside class="sidebar">
+      <h2>选择队伍</h2>
+      <ul id="team_list">
+
+      </ul>
+    </aside>
+
+    <main class="teams_content">
+      <div id="chart"></div>
+    </main>
+  </div>
+  <script src="../js/checkData.js"></script>
+</body>
+
 </html>
