@@ -19,7 +19,6 @@ backButton.addEventListener("click", (event) => {
 })
 
 async function getMatchesData() {
-    const response = await fetch(getMatchesDataApiUrl)
     return (await fetch(getMatchesDataApiUrl)).json()
 }
 
@@ -143,7 +142,6 @@ async function loadTeamData(teamId, li) {
     const matchData = document.getElementById("matches_data_tablebody");
     // 更新比赛数据表
     for (let i = 0; i < matches.length; i++) {
-        const matchjson = matches[i].json
         const match = matches[i]
         const html =
             `<tr>
