@@ -1,4 +1,6 @@
 ### IntelliJ IDEA ###
+.idea/
+webManager.iml
 out/
 target/
 #!**/src/main/**/out/
@@ -29,8 +31,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-# IDEA
-.idea/
-webManager.iml
 
-temp/
