@@ -31,5 +31,6 @@ bin/
 
 # IDEA
 .idea/
+webManager.iml
 
 temp/
