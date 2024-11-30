@@ -100,7 +100,6 @@ public class MatchDataOperation extends MongoOperation {
      * @return JSON 格式的字符串
      */
     public static String ReadAll() {
-        // TODO: 让返回的json以时间顺序排序
         List<Document> result = new ArrayList<>();
         try {
             collection.find()
@@ -133,6 +132,8 @@ public class MatchDataOperation extends MongoOperation {
         } catch (Exception e) {
             throw new RuntimeException("读取数据时发生错误: " + e.getMessage());
         }
+        result.sort((doc1, doc2) -> doc2.getString("matchDate")
+                                        .compareTo(doc1.getString("matchDate")));
         
         return result.stream()
                      .map(Document::toJson)
