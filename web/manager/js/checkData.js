@@ -162,35 +162,71 @@ function updateChart(matches) {
     chart.innerHTML = ""; // 清空之前的内容
 
     const canvas = document.createElement("canvas");
+    canvas.id = 'chart_canvas'
     canvas.width = chart.offsetWidth;
     canvas.height = chart.offsetHeight;
     chart.appendChild(canvas);
 
-    const ctx = canvas.getContext("2d");
-    const padding = 40;
-    const width = canvas.width - 2 * padding;
-    const height = canvas.height - 2 * padding;
+    // 提取 X 轴和 Y 轴数据
+    const labels = matches.map(match => match.matchDate);
+    const data = matches.map(match => match.Scores);
 
-    // 数据
-    const goals = matches.map((m) => m.scores);
-    const maxGoals = Math.max(...goals, 5);
-    const step = width / (goals.length - 1);
-
-    // 绘制坐标轴
-    ctx.beginPath();
-    ctx.moveTo(padding, padding);
-    ctx.lineTo(padding, padding + height);
-    ctx.lineTo(padding + width, padding + height);
-    ctx.stroke();
-
-    // 绘制折线图
-    ctx.beginPath();
-    goals.forEach((goal, i) => {
-        const x = padding + i * step;
-        const y = padding + height - (goal / maxGoals) * height;
-        if (i === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-        ctx.arc(x, y, 3, 0, 2 * Math.PI); // 节点圆点
+    // 配置 Chart.js
+    const ctx = document.getElementById('chart_canvas').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '得分',
+                data: data,
+                borderColor: 'blue',
+                backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                pointRadius: 0,
+                pointHoverRadius: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                },
+                zoom: {
+                    pan: {
+                        enabled: true,
+                        mode: 'x', // 启用 X 轴平移
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true
+                        },
+                        pinch: {
+                            enabled: true
+                        },
+                        mode: 'x' // 启用 X 轴缩放
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    reverse: true,
+                    title: {
+                        display: true,
+                        text: '比赛日期'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: '得分'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
     });
-    ctx.stroke();
 }
