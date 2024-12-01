@@ -1,0 +1,382 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: Poppins-Regular, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: #333333;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px 40px;
+
+  border-radius: 10px;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity;
+}
+
+.container:hover {
+  transform: translateY(-8px);
+  will-change: transform;
+}
+
+.container .header2 h2 {
+  font-size: 24px;
+  color: #4b6cb7;
+  margin-bottom: 20px;
+}
+
+.container .back_button {
+  margin-right: 10px;
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #4b6cb7;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.container .back_button:hover {
+  background-color: #182848;
+}
+
+.container .header1 {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .header2 {
+  display: flex;
+  justify-content: center;
+}
+
+#intro_container .buttons .choice_but {
+  margin: 10px;
+  padding: 10px 16px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4b6cb7;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#intro_container .buttons .choice_but:hover {
+  background-color: #182848;
+  transform: scale(1.05);
+}
+
+.container #check_team_container {
+  background-color: #fff;
+}
+
+.data_table_wrapper {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* 滚动条整体样式 */
+.data_table_wrapper::-webkit-scrollbar {
+  width: 10px;
+  /* 垂直滚动条的宽度 */
+}
+
+/* 滚动条轨道（背景） */
+.data_table_wrapper::-webkit-scrollbar-track {
+  background: #f4f4f4;
+  /* 滑轨背景色 */
+  border-radius: 10px;
+  /* 圆角滑轨 */
+}
+
+/* 滚动条滑块（可拖动部分） */
+.data_table_wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  /* 滑块圆角 */
+  transition: width 0.3s ease;
+  /* 仅过渡背景色 */
+}
+
+/* 鼠标悬停时滑块样式 */
+.data_table_wrapper::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.data_table {
+  border-collapse: collapse;
+  margin: 25px 0px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.1);
+}
+
+.data_table th,
+.data_table td {
+  border: none;
+  padding: 8px;
+}
+
+/* 标题栏 */
+.data_table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #ededed;
+  color: #333;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.data_table th,
+.data_table td {
+  padding: 12px, 15px;
+}
+
+/* 数据行和数据格 */
+.data_table tbody tr,
+td {
+  transition: background-color 0.3s ease;
+}
+
+/* 偶数行 */
+.data_table tbody tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+/* 数据行悬浮背景 */
+.data_table tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+/* 数据格悬浮背景 */
+.data_table tbody td:hover {
+  background-color: #ebebeb;
+}
+
+.data_table tbody td button {
+  margin-right: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #e53935;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.data_table tbody td button:hover {
+  background-color: #c62828;
+}
+
+.data_table tbody td button:active {
+  background-color: #b71c1c;
+  /* 按下更深的红色 */
+  transform: scale(0.95);
+  /* 点击时缩小按钮 */
+}
+
+/* 根容器样式 */
+.data_container {
+  display: flex;
+  min-width: 400px;
+  height: 750px;
+  height: 100%;
+  /* 自适应视口高度 */
+}
+
+/* 左侧侧边栏 */
+.data_container aside {
+  min-width: 150px;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
+  background-color: #f9f9f9;
+  border-right: 1px solid #ccc;
+}
+
+/* 侧边栏标题 */
+.data_container aside h2 {
+  font-size: 16px;
+  padding: 8px;
+  text-align: center;
+  color: #333;
+}
+
+/* 侧边栏列表 */
+.data_container aside ul {
+  height: calc(100% - 60px);
+  max-height: 650px;
+  /* 剩余空间，减去标题高度 */
+  padding-left: 0;
+  margin: 0;
+  overflow-y: auto;
+  /* 垂直滚动 */
+  overflow-x: hidden;
+  /* 禁止水平滚动 */
+  list-style-type: none;
+  /* 移除默认列表样式 */
+}
+
+/* 滚动条样式 */
+.data-container aside ul::-webkit-scrollbar {
+  width: 6px;
+  /* 滚动条宽度 */
+}
+
+.data-container aside ul::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* 侧边栏列表项 */
+.data_container aside li {
+  cursor: pointer;
+  display: block;
+  margin: 5px 0 5px 5px;
+  width: 80%;
+  padding: 3px 6px;
+  color: #ebebeb;
+  border-radius: 10px;
+  user-select: none;
+  background-color: #4b6cb7;
+  white-space: nowrap;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* 列表项 hover 效果 */
+.data_container aside li:hover {
+  transform: translateX(5px);
+  background-color: #182848;
+}
+
+/* 主内容区域 */
+.data_container .teams_content {
+  flex-grow: 1;
+  /* 占据剩余空间 */
+  padding: 10px;
+}
+
+/* 图表占位 */
+.data_container .teams_content #chart {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
+  background-color: #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.data_container .teams_content table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
+}
+
+/* 表格样式 */
+/* 表格滚动 */
+.data_container .teams_content #matches_data_table {
+  /* overflow-y: auto; 垂直滚动 */
+  height: 300px;
+  /* 固定高度 */
+  max-height: 400px;
+  /* 最大高度 */
+  /* table-layout: fixed; */
+}
+
+.data_container .teams_content #matches_data_table thead {
+  border-radius: 10px;
+  display: table;
+  width: 100%;
+}
+
+.data_container .teams_content #matches_data_table tbody {
+  display: block;
+  height: 300px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.data_container .teams_content #matches_data_table tbody::-webkit-scrollbar {
+  display: none;
+}
+
+/* 表头和单元格样式 */
+.data_container .teams_content th,
+.data_container .teams_content td {
+  padding: 6px;
+  text-align: left;
+  display: inline-block;
+  border: 1px solid #ddd;
+  height: 40px;
+  min-width: 100px;
+  width: 25%;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 偶数行 */
+.data_container tbody tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.data_container .teams_content th:hover,
+.data_container .teams_content td:hover {
+  background-color: #ebebeb;
+}
+
+.data_container .teams_content th {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.data_container .teams_content td {
+  color: #666;
+}
+
+
+
+
+.fade_out {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, visibility;
+}
+
+.fade_in {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, visibility;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.active {
+  transform: translateX(8px);
+  background-color: #26811e !important;
+
+}

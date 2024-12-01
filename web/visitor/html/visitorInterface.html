@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>游客</title>
+    <link rel="stylesheet" href="../css/visitorInterface.css" />
+    <script>
+      window.addEventListener("load", () => {
+        const container = document.getElementById("container");
+        container.classList.add("fade_in");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <h1>游客操作</h1>
+      <div class="buttons">
+        <button class="redir_but" data-url="./checkData.html">查看数据</button>
+        <button class="redir_but" data-url="./findData.html">查找数据</button>
+      </div>
+    </div>
+    <script src="../js/visitorInterface.js"></script>
+  </body>
+</html>

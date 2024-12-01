@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>查找数据</title>
+    <link rel="stylesheet" href="../css/FindData.css" type="text/css" />
+    <script>
+      window.addEventListener("load", () => {
+        // 这里的id在调试完后要修改
+        const container = document.getElementById("intro_container");
+        container.classList.add("fade_in");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container" id="intro_container">
+      <div class="header1">
+        <button
+          class="back_button"
+          id="intro_back_button"
+          data-url="./visitorInterface.html"
+        >
+          < 返回
+        </button>
+      </div>
+      <div class="header2">
+        <h2>请选择要查找的数据:</h2>
+      </div>
+      <div class="buttons">
+        <button class="choice_but" onclick="choose_search_team()">
+          队伍(教练)
+        </button>
+        <button class="choice_but" onclick="choose_search_match()">
+          比赛数据
+        </button>
+      </div>
+    </div>
+
+    <div class="container hidden" id="by_team_container">
+      <div class="header1">
+        <button
+          class="back_button"
+          id="team_back_button"
+          onclick="input_teamname_back();"
+        >
+          < 返回
+        </button>
+      </div>
+      <div class="header2">
+        <h2>请输入队伍名称:</h2>
+      </div>
+      <div class="team_name_input_div">
+        <form action="/findTeamByName" method="post">
+          <input type="text" class="team_name_input_box" />
+          <button type="submit" class="submit_button">提交</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container hidden" id="by_match_container">
+      <div class="header1">
+        <button
+          class="back_button"
+          id="match_bach_button"
+          onclick="input_match_back();"
+        >
+          < 返回
+        </button>
+      </div>
+      <div class="header2">
+        <h2>请输入比赛查询依据:</h2>
+      </div>
+      <div class="match_info_input_div">
+        <form action="/findMatchesByInfo" method="post">
+          <select name="info_type" id="match_info_type_selector">
+            <option value="matchDate">比赛日期</option>
+            <option value="homeTeamName">主场球队名字</option>
+            <option value="guestTeamName">客场球队名字</option>
+            <option value="matchType">比赛性质</option>
+          </select>
+          <input type="date" name="info_value" id="match_info_input" />
+          <button type="submit" class="submit_button">提交</button>
+        </form>
+      </div>
+    </div>
+    <script src="../js/FindData.js"></script>
+  </body>
+</html>
