@@ -1,9 +1,8 @@
 const introBackButton = document.getElementById("intro_back_button")
 const introContainer = document.getElementById("intro_container")
-const byTeamContainer = document.getElementById("by_team_container")
-const byMatchContainer = document.getElementById("by_match_container")
 const matchInfoTypeSelector = document.getElementById("match_info_type_selector")
 const matchInfoInput = document.getElementById("match_info_input")
+const matchInfoSubmitButton = document.getElementById("match_info_submit_button")
 
 introBackButton.addEventListener("click", (event) => {
     setTimeout(() => {
@@ -14,59 +13,22 @@ introBackButton.addEventListener("click", (event) => {
     introContainer.classList.add("fade_out")
 
     const targetUrl = event.target.getAttribute("data-url")
+})
 
+matchInfoSubmitButton.addEventListener("click", async function () {
+    const datatype = matchInfoTypeSelector.value
+    const datavalue = matchInfoInput.value
+    const response = await find_match_by(datatype, datavalue)
+    console.log(response.json())
+    // TODO: handle response
 })
 
 matchInfoTypeSelector.addEventListener("change", function () {
     adapt_to_info_type()
 })
-function choose_search_team() {
-    setTimeout(() => {
-        byTeamContainer.classList.remove("hidden")
-        introContainer.classList.add("hidden")
-    }, 300)
-    introContainer.classList.remove("fade_in")
-    introContainer.classList.add("fade_out")
 
-    byTeamContainer.classList.remove("fade_out")
-    byTeamContainer.classList.add("fade_in")
-
-}
-function choose_search_match() {
-    setTimeout(() => {
-        byMatchContainer.classList.remove("hidden")
-        introContainer.classList.add("hidden")
-    }, 300)
-    introContainer.classList.remove("fade_in")
-    introContainer.classList.add("fade_out")
-
-    byMatchContainer.classList.remove("fade_out")
-    byMatchContainer.classList.add("fade_in")
-
-}
-
-function input_teamname_back() {
-    setTimeout(() => {
-        introContainer.classList.remove("hidden")
-        byTeamContainer.classList.add("hidden")
-    }, 300)
-    byTeamContainer.classList.remove("fade_in")
-    byTeamContainer.classList.add("fade_out")
-
-    introContainer.classList.remove("fade_out")
-    introContainer.classList.add("fade_in")
-
-}
-function input_match_back() {
-    setTimeout(() => {
-        introContainer.classList.remove("hidden")
-        byMatchContainer.classList.add("hidden")
-    }, 300)
-    byMatchContainer.classList.remove("fade_in")
-    byMatchContainer.classList.add("fade_out")
-
-    introContainer.classList.remove("fade_out")
-    introContainer.classList.add("fade_in")
+async function find_match_by(datatype, datavalue) {
+    return await fetch(`/api/findmatchby?datatype=${datatype}&datavalue=${datavalue}`)
 }
 
 function adapt_to_info_type() {
@@ -76,8 +38,7 @@ function adapt_to_info_type() {
         default:
             matchInfoInput.type = "date"
             break;
-        case "homeTeamName":
-        case "guestTeamName":
+        case "teamName":
         case "matchType":
             matchInfoInput.type = "text"
             break;
