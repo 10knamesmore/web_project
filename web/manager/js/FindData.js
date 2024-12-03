@@ -82,4 +82,7 @@ function adapt_to_info_type() {
             matchInfoInput.type = "text"
             break;
     }
+    document.getElementById(
+        "match_info_input"
+    ).value = "";
 }
