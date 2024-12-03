@@ -157,13 +157,13 @@ public class MatchDataOperation extends MongoOperation {
                   .forEach(document -> {
                       String matchType = document.getString("matchType");
                       String matchDate = document.getString("matchDate");
-                      String EnemyTeanName = TeamDataOperation.findTeamById(document.getString("teamBId"));
+                      String EnemyTeamName = TeamDataOperation.findTeamById(document.getString("teamBId"));
                       Integer teamAScore = document.get("result", Document.class)
                                                    .getInteger("teamAScores");
                       
                       result.add(new Document().append("matchType", matchType)
                                                .append("matchDate", matchDate)
-                                               .append("enemyTeamName", EnemyTeanName)
+                                               .append("enemyTeamName", EnemyTeamName)
                                                .append("Scores", teamAScore));
                   });
         collection.find(Filters.eq("teamBId", id))
