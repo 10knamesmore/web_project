@@ -14,7 +14,6 @@ public class ManagerLoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         
-        /*TODO 补充从数据库中查询用户信息的代码*/
         if("123".equals(username) && "123".equals(password)) {
             resp.sendRedirect("/manager/html/managerInterface.html");
         } else {
