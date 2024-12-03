@@ -74,40 +74,54 @@ function checkTeamsBack() {
 
 }
 
+function deleteMatch(matchId) {
+    fetch(`/api/deletematch?id=${matchId}`)
+        .then(
+            () => {
+                alert("删除成功！");
+                // 刷新页面
+                choseCheckMatches()
+            }
+        )
+}
 
-function choseCheckMatches() {
+async function choseCheckMatches() {
     const tableBody = document.getElementById("matches_table").querySelector("tbody");
     tableBody.innerHTML = ""; // Clear any existing rows
 
-    getMatchesData()
-        .then(data => {
-            data.forEach((match) => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                <td>${match.matchType}</td>
-                <td>${match.matchDate}</td>
-                <td>${match.homeTeamName}</td>
-                <td>${match.homeTeamScore}</td>
-                <td>${match.awayTeamScore}</td>
-                <td>${match.awayTeamName}</td>
-                <td><button>删除</button></td>
-                `;
-                tableBody.appendChild(row);
-            });
-        })
+    const data = await getMatchesData()
+    data.forEach((match) => {
+        const row = document.createElement("tr");
+        const id = match.id
+        row.innerHTML = `
+            <td>${match.matchType}</td>
+            <td>${match.matchDate}</td>
+            <td>${match.homeTeamName}</td>
+            <td>${match.homeTeamScore}</td>
+            <td>${match.awayTeamScore}</td>
+            <td>${match.awayTeamName}</td>
+            <td><button class="delete_match_button" data_id="${id}">删除</button></td>
+            `;
+        tableBody.appendChild(row);
+    });
     setTimeout(() => {
         introContainer.classList.add("hidden")
         checkMatchesContainer.classList.remove("hidden")
     }, 300)
 
+    const deleteButtons = document.querySelectorAll(".delete_match_button");
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const matchId = button.getAttribute("data_id");
+            deleteMatch(matchId);
+        });
+    });
     // Hide other containers and show the matches container
     introContainer.classList.remove("fade_in")
     introContainer.classList.add("fade_out")
 
     checkMatchesContainer.classList.remove("fade_out")
     checkMatchesContainer.classList.add("fade_in")
-
-
 }
 
 // Populate the table with data

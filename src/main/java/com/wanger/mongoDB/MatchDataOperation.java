@@ -12,6 +12,7 @@ import com.wanger.exceptions.SavedDataClassException;
 import com.wanger.exceptions.TeamNotExitsException;
 import com.wanger.statics.Statics;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -104,6 +105,8 @@ public class MatchDataOperation extends MongoOperation {
         try {
             collection.find()
                       .forEach(document -> {
+                          String id = document.get("_id")
+                                              .toString();
                           String matchType = document.getString("matchType");
                           String matchDate = document.getString("matchDate");
                           String homeTeamId = document.getString("homeTeamId");
@@ -120,7 +123,9 @@ public class MatchDataOperation extends MongoOperation {
                           Integer homeTeamScore = homeTeamId.equals(teamAId) ? teamAScore : teamBScore;
                           Integer awayTeamScore = homeTeamId.equals(teamAId) ? teamBScore : teamAScore;
                           
-                          Document doc = new Document().append("matchType", matchType)
+                          Document doc = new Document().append("id", id)
+                                                       .append("matchType", matchType)
+                                                       .append("matchType", matchType)
                                                        .append("matchDate", matchDate)
                                                        .append("homeTeamName", homeTeamName)
                                                        .append("awayTeamName", awayTeamName)
@@ -184,5 +189,8 @@ public class MatchDataOperation extends MongoOperation {
         }
     }
     
+    public static void deleteById(String id) {
+        collection.deleteOne(Filters.eq("_id", new ObjectId(id)));
+    }
 }
 
