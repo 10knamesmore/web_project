@@ -31,7 +31,38 @@
             <option value="matchType">比赛性质</option>
         </select>
         <input id="match_info_input" name="info_value" type="date"/>
-        <button class="submit_button" id="match_info_submit_button" type="submit">提交</button>
+        <button class="submit_button" id="match_info_submit_button">提交</button>
+    </div>
+</div>
+
+<div class="container hidden" id="data_container">
+    <div class="header1">
+        <button class="back_button" id="data_back_button">
+            < 返回
+        </button>
+    </div>
+    <div class="header2">
+        <h2>查询结果</h2>
+    </div>
+    <div class="data_table_wrapper">
+        <div class="matches_table">
+            <table class="data_table" id="matches_table">
+                <thead>
+                <tr>
+                    <th>赛事</th>
+                    <th>比赛时间</th>
+                    <th>主队</th>
+                    <th>主队得分</th>
+                    <th>客队得分</th>
+                    <th>客队</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- 在这动态生成rows -->
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script src="../js/FindData.js"></script>

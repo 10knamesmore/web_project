@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.bson.Document;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/api/findmatchby")
 public class FindMatchBy extends HttpServlet {
@@ -28,7 +30,10 @@ public class FindMatchBy extends HttpServlet {
                     resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
                     return;
                 }
-                filter.put("homeTeamId", id);
+                List<Document> orConditions = new ArrayList<>();
+                orConditions.add(new Document("teamAId", id));
+                orConditions.add(new Document("teamBId", id));
+                filter.put("$or", orConditions);
                 break;
             case "matchType":
                 filter.put("matchType", dataValue);
