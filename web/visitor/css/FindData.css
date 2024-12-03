@@ -1,228 +1,305 @@
 * {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
-  font-family: Poppins-Regular, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #4b6cb7, #182848);
+    font-family: Poppins-Regular, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
     color: #333333;
 }
 
 .container {
-  background-color: #fff;
-  padding: 20px 40px;
-  max-width: 350px;
-  border-radius: 10px;
-  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  opacity: 0; /* 初始透明 */
-  transition: opacity 0.3s ease; /* 渐隐渐显过渡 */
-  will-change: opacity;
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    opacity: 0; /* 初始透明 */
+    transition: opacity 0.3s ease; /* 渐隐渐显过渡 */
+    will-change: opacity;
 }
 
 .container:hover {
-  transform: translateY(-8px);
-  will-change: transform;
+    transform: translateY(-8px);
+    will-change: transform;
 }
 
 .container h2 {
-  font-size: 24px;
-  color: #4b6cb7;
-  margin-bottom: 20px;
+    font-size: 24px;
+    color: #4b6cb7;
+    margin-bottom: 20px;
 }
 
 .container .back_button {
-  margin-right: 10px;
-  padding: 8px 8px;
-  font-size: 14px;
-  cursor: pointer;
-  background-color: #4b6cb7;
-  color: white;
-  border: none;
-  border-radius: 10px;
+    margin-right: 10px;
+    padding: 8px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #4b6cb7;
+    color: white;
+    border: none;
+    border-radius: 10px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .container .back_button:hover {
     transform: scale(1.05);
-  background-color: #182848;
+    background-color: #182848;
 }
 
 .container .header1 {
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .container .header2 {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 #intro_container .buttons .choice_but {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4b6cb7;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4b6cb7;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 #intro_container .buttons .choice_but:hover {
-  background-color: #182848;
-  transform: scale(1.05);
+    background-color: #182848;
+    transform: scale(1.05);
 }
 
-#by_team_container .team_name_input_div .team_name_input_box {
-  width: 100%;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 8px;
-  margin-top: 6px;
-  margin-bottom: 10px;
-  border: 2px solid #4b6cb7;
-  border-radius: 10px;
-  font-size: 16px;
-  color: #4b6cb7;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease,
-    background-color 0.3s ease;
-}
-#by_team_container .team_name_input_div .team_name_input_box:hover {
-  border-color: #2a416e;
-  background-color: #f6f6f6;
-  box-shadow: 0 0 8px rgba(72, 108, 183, 0.5);
-}
-
-#by_team_container .team_name_input_div .team_name_input_box:focus {
-  border-color: #182848;
-  background-color: #f2f2f2;
-  box-shadow: 0 0 12px rgba(72, 108, 183, 0.5);
-}
-
-#by_team_container .team_name_input_div .submit_button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 6px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4b6cb7;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-#by_team_container .team_name_input_div .submit_button:hover {
-  background-color: #182848;
-  transform: scale(1.05);
-}
-#by_match_container .match_info_input_div #match_info_type_selector {
-  width: 100%;
-  padding: 3px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 8px;
-  margin-top: 6px;
-  margin-bottom: 10px;
-  border: 2px solid #4b6cb7;
-  border-radius: 10px;
-  font-size: 16px;
-  color: #4b6cb7;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+#intro_container .match_info_input_div #match_info_type_selector {
+    width: 100%;
+    padding: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    border: 2px solid #4b6cb7;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #4b6cb7;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
 }
 
-#by_match_container .match_info_input_div #match_info_type_selector:hover {
-  border-color: #2a416e;
-  background-color: #f6f6f6;
-  box-shadow: 0 0 8px rgba(72, 108, 183, 0.5);
-}
-#by_match_container .match_info_input_div #match_info_type_selector:focus {
-  border-color: #182848;
-  background-color: #f2f2f2;
-  box-shadow: 0 0 12px rgba(72, 108, 183, 0.5);
+#intro_container .match_info_input_div #match_info_type_selector:hover {
+    border-color: #2a416e;
+    background-color: #f6f6f6;
+    box-shadow: 0 0 8px rgba(72, 108, 183, 0.5);
 }
 
-#by_match_container .match_info_input_div #match_info_input {
-  width: 100%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 12px;
-  margin-top: 10px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  font-size: 16px;
-  border: 2px solid #4b6cb7;
-  border-radius: 10px;
-  font-size: 16px;
-  color: #4b6cb7;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+#intro_container .match_info_input_div #match_info_type_selector:focus {
+    border-color: #182848;
+    background-color: #f2f2f2;
+    box-shadow: 0 0 12px rgba(72, 108, 183, 0.5);
+}
+
+#intro_container .match_info_input_div #match_info_input {
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: 2px solid #4b6cb7;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #4b6cb7;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
 }
-#by_match_container .match_info_input_div #match_info_input:hover {
-  border-color: #2a416e;
-  background-color: #f1f1f1;
-  box-shadow: 0 0 8px rgba(72, 108, 183, 0.5);
+
+#intro_container .match_info_input_div #match_info_input:hover {
+    border-color: #2a416e;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 8px rgba(72, 108, 183, 0.5);
 }
-#by_match_container .match_info_input_div #match_info_input:focus {
-  border-color: #182848;
-  background-color: #f5f5f5;
-  box-shadow: 0 0 12px rgba(72, 108, 183, 0.5);
+
+#intro_container .match_info_input_div #match_info_input:focus {
+    border-color: #182848;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 12px rgba(72, 108, 183, 0.5);
 }
-#by_match_container .match_info_input_div .submit_button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 6px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4b6cb7;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+
+#intro_container .match_info_input_div .submit_button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4b6cb7;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
-#by_match_container .match_info_input_div .submit_button:hover {
-  background-color: #182848;
-  transform: scale(1.05);
+
+#intro_container .match_info_input_div .submit_button:hover {
+    background-color: #182848;
+    transform: scale(1.05);
 }
+
+.data_table_wrapper {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* 滚动条整体样式 */
+
+.data_table_wrapper::-webkit-scrollbar {
+    width: 10px;
+    /* 垂直滚动条的宽度 */
+}
+
+/* 滚动条轨道（背景） */
+
+.data_table_wrapper::-webkit-scrollbar-track {
+    background: #f4f4f4;
+    /* 滑轨背景色 */
+    border-radius: 10px;
+    /* 圆角滑轨 */
+}
+
+/* 滚动条滑块（可拖动部分） */
+
+.data_table_wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    /* 滑块圆角 */
+    transition: width 0.3s ease;
+    /* 仅过渡背景色 */
+}
+
+/* 鼠标悬停时滑块样式 */
+
+.data_table_wrapper::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.data_table {
+    border-collapse: collapse;
+    margin: 25px 0px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 13px rgba(0, 0, 0, 0.1);
+}
+
+.data_table th,
+.data_table td {
+    border: none;
+    padding: 8px;
+}
+
+/* 标题栏 */
+
+.data_table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #ededed;
+    color: #333;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.data_table th,
+.data_table td {
+    padding: 12px 15px;
+}
+
+/* 数据行和数据格 */
+
+.data_table tbody tr,
+td {
+    transition: background-color 0.3s ease;
+}
+
+/* 偶数行 */
+
+.data_table tbody tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+/* 数据行悬浮背景 */
+
+.data_table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* 数据格悬浮背景 */
+
+.data_table tbody td:hover {
+    background-color: #ebebeb;
+}
+
+.data_table tbody td button {
+    margin-right: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #e53935;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.data_table tbody td button:hover {
+    background-color: #c62828;
+}
+
+.data_table tbody td button:active {
+    background-color: #b71c1c;
+    /* 按下更深的红色 */
+    transform: scale(0.95);
+    /* 点击时缩小按钮 */
+}
+
 /* 用于控制渐隐效果 */
 .fade_out {
-  pointer-events: none; /* 禁止点击 */
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease; /* 隐藏时延迟处理visibility */
-  will-change: opacity, visibility;
+    pointer-events: none; /* 禁止点击 */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 隐藏时延迟处理visibility */
+    will-change: opacity, visibility;
 }
 
 /* 用于控制渐显效果 */
 .fade_in {
-  opacity: 1;
-  visibility: visible; /* 显示元素 */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* 显示时立即恢复 */
-  will-change: opacity, visibility;
+    opacity: 1;
+    visibility: visible; /* 显示元素 */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 显示时立即恢复 */
+    will-change: opacity, visibility;
 }
 
 /* 用于控制显示或隐藏的状态 */
 .hidden {
-  opacity: 0;
-  display: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
