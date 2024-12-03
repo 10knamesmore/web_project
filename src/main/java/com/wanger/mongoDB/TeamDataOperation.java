@@ -118,6 +118,12 @@ public class TeamDataOperation extends MongoOperation {
     }
     
     
+    /**
+     * 根据filter查找team的id
+     *
+     * @param filter 过滤条件
+     * @return team的id的list
+     */
     public static ArrayList<String> findBy(Document filter) {
         ArrayList<String> result = new ArrayList<>();
         

@@ -192,5 +192,58 @@ public class MatchDataOperation extends MongoOperation {
     public static void deleteById(String id) {
         collection.deleteOne(Filters.eq("_id", new ObjectId(id)));
     }
+    
+    /**
+     * 根据条件查找比赛数据,返回JSON,如果为空则返回[]
+     *
+     * @param filter 条件
+     * @return JSON, 格式为[{},{},{}]
+     */
+    public static String findBy(Document filter) {
+        ArrayList<Document> result = new ArrayList<>();
+        
+        collection.find(filter)
+                  .forEach(document -> {
+                      String id = document.get("_id")
+                                          .toString();
+                      String matchType = document.getString("matchType");
+                      String matchDate = document.getString("matchDate");
+                      String homeTeamId = document.getString("homeTeamId");
+                      String teamAId = document.getString("teamAId");
+                      String teamBId = document.getString("teamBId");
+                      Document resultDocument = document.get("result", Document.class);
+                      Integer teamAScore = resultDocument.getInteger("teamAScores");
+                      Integer teamBScore = resultDocument.getInteger("teamBScores");
+                      
+                      String homeTeamName = TeamDataOperation.findTeamById(homeTeamId);
+                      String awayTeamName = homeTeamId.equals(teamAId) ? TeamDataOperation.findTeamById(
+                              teamBId) : TeamDataOperation.findTeamById(teamAId);
+                      
+                      Integer homeTeamScore = homeTeamId.equals(teamAId) ? teamAScore : teamBScore;
+                      Integer awayTeamScore = homeTeamId.equals(teamAId) ? teamBScore : teamAScore;
+                      
+                      Document doc = new Document().append("id", id)
+                                                   .append("matchType", matchType)
+                                                   .append("matchType", matchType)
+                                                   .append("matchDate", matchDate)
+                                                   .append("homeTeamName", homeTeamName)
+                                                   .append("awayTeamName", awayTeamName)
+                                                   .append("homeTeamScore", homeTeamScore)
+                                                   .append("awayTeamScore", awayTeamScore);
+                      
+                      result.add(doc);
+                  });
+        result.sort((doc1, doc2) -> doc2.getString("matchDate")
+                                        .compareTo(doc1.getString("matchDate")));
+        if (result.isEmpty()) {
+            return "[]";
+        }
+        
+        return result.stream()
+                     .map(Document::toJson)
+                     .collect(Collectors.joining(",", "[", "]"));
+    }
+    
+    
 }
 
